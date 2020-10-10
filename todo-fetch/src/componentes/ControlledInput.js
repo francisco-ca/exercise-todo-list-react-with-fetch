@@ -6,13 +6,17 @@ const ControlledInput = () => {
     const [list, setList] = useState([]);
     const [complete, setComplete] = useState("none")
     const deleteTask = i => {
-
         list.splice(i, 1);
-
+        setList([...list])
+        
+        actualizarLista([...list])
+    }
+    const deleteAll = () => {
+        list.splice(0, list.length);
         setList([...list])
         actualizarLista([...list])
-
     }
+   
     const largolista = list.length
 
     const actualizarLista = (todos) => {
@@ -98,6 +102,9 @@ const ControlledInput = () => {
 
                 </ul>
                 <div className="larglist"> {largolista} Item left</div>
+                <br></br>
+                <div> <button className="clearall"
+                                    onClick={() => deleteAll()}>Clear All</button></div>
 
 
 
